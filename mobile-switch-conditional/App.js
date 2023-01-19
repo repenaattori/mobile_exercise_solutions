@@ -4,6 +4,7 @@ import Styles from './styles/Styles.js';
 
 export default function App() {
 
+  // Register state used for conditional rendering
   const [register, setRegister] = useState(false);
 
   const buttonText = register ? 'REGISTER' : 'LOGIN' 
@@ -33,6 +34,9 @@ export default function App() {
   );
 }
 
+/**
+ * Component for label text an input
+ */
 function FormInput({label, isPw}){
   return(
     <View>
