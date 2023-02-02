@@ -17,7 +17,7 @@ function getOptions({route}){
     tabBarIcon: ({color,size}) => <FontAwesome name={iconName} size={size} color={color}/>,
     tabBarStyle: {backgroundColor: MD3LightTheme.colors.primary},
     tabBarInactiveBackgroundColor: MD3LightTheme.colors.primaryContainer,
-    tabBarActiveTintColor: MD3LightTheme.colors.onPrimary,
+    tabBarActiveTintColor: MD3LightTheme.colors.onPrimary
   };
 }
 
@@ -57,10 +57,10 @@ function Home({navigation}){
   return(
     <Provider theme={MD3LightTheme}>
       <View>
-        <Text variant='headlineLarge'>User information</Text>
-        <TextInput mode='outlined' label='First name' value={fname} onChangeText={t=>setFname(t)}/>
-        <TextInput mode='outlined' label='Last name' value={lname} onChangeText={t=>setLname(t)}/>
-        <Button mode='contained' onPress={()=> navigation.navigate('Profile', {fname, lname}) }>Submit</Button>
+        <Text style={Styles.formComponent} variant='headlineLarge'>User information</Text>
+        <TextInput style={Styles.formComponent} mode='outlined' label='First name' value={fname} onChangeText={t=>setFname(t)}/>
+        <TextInput style={Styles.formComponent} mode='outlined' label='Last name' value={lname} onChangeText={t=>setLname(t)}/>
+        <Button style={Styles.formComponent} mode='contained' onPress={()=> navigation.navigate('Profile', {fname, lname}) }>Submit</Button>
       </View>
     </Provider>
   )
