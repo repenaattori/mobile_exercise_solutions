@@ -5,18 +5,27 @@ import {MD3LightTheme, Provider, Text, Button, TextInput} from 'react-native-pap
 import { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
+//This returns some options to modify the bottom tabs. The icon is selected 
+//depending on the route.
 function getOptions({route}){
-
+  const iconName = route.name == 'Home' ? 'home' : 'user';
+  return {
+    tabBarIcon: ({color,size}) => <FontAwesome name={iconName} size={size} color={color}/>,
+    tabBarStyle: {backgroundColor: MD3LightTheme.colors.primary},
+    tabBarInactiveBackgroundColor: MD3LightTheme.colors.primaryContainer,
+    tabBarActiveTintColor: MD3LightTheme.colors.onPrimary,
+  };
 }
 
 export default function App() {
 
   return (
    <NavigationContainer>
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={getOptions}>
       <Tab.Screen name='Home' component={Home}/>
       <Tab.Screen name='Profile' component={Profile}/>
     </Tab.Navigator>
@@ -26,6 +35,8 @@ export default function App() {
 
 function Profile({route}){
 
+  //Checking if the params exist
+  //The profile may be started without parameters from bottom menu (params is not defined)
   const fname = route.params ? route.params.fname : '';
   const lname = route.params ? route.params.lname : '';
 
